@@ -1,0 +1,41 @@
+openapi: 3.0.0
+info:
+  title: API de Ejemplo
+  version: 1.0.0
+  description: |
+    Esta es una documentación de ejemplo usando Redoc desde cero.
+    Contiene un único endpoint para listar usuarios.
+
+servers:
+  - url: https://api.miempresa.com/v1
+
+paths:
+  /usuarios:
+    get:
+      summary: Obtener lista de usuarios
+      description: Retorna todos los usuarios registrados en el sistema.
+      responses:
+        '200':
+          description: Lista de usuarios obtenida exitosamente.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Usuario'
+
+components:
+  schemas:
+    Usuario:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        nombre:
+          type: string
+          example: "Juan Pérez"
+        email:
+          type: string
+          format: email
+          example: "juan@ejemplo.com"
